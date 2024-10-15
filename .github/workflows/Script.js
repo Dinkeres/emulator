@@ -84,6 +84,7 @@ for (let i = 0; i < numColumns; i++) {
             iframe.src = url;
             iframeContainer.style.display = 'block';
         };
+
         
         column.appendChild(button);
     }
