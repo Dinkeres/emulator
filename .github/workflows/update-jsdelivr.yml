@@ -1,4 +1,4 @@
-name: Update jsDelivr
+name: Update Script on jsDelivr
 
 on:
   push:
@@ -6,17 +6,22 @@ on:
       - main
 
 jobs:
-  update-jsdelivr:
+  update-script:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      - name: Update jsDelivr
+
+      - name: Change permissions on Script.js
+        run: chmod 755 .github/workflows/Script.js
+
+      - name: Update Script on jsDelivr
         env:
-          JSDELIVR_URL: https://cdn.jsdelivr.net/gh/${GITHUB_REPO}/script.js
+          JSDELIVR_URL: https://cdn.jsdelivr.net/gh/Dinkeres/emulator@main/.github/workflows/Script.js
+          SECRET_TOKEN: ${{ secrets.SECRET_TOKEN }}
         run: |
           curl -X PUT \
           $JSDELIVR_URL \
-          -H 'Authorization: Bearer ${{ secrets.SECRET_TOKEN }}' \
+          -H 'Authorization: Bearer $SECRET_TOKEN' \
           -H 'Content-Type: application/javascript' \
-          -T script.js
+          -T .github/workflows/Script.js
