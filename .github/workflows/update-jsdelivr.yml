@@ -19,4 +19,4 @@ jobs:
           $JSDELIVR_URL \
           -H 'Authorization: Bearer ${{ secrets.SECRET_TOKEN }}' \
           -H 'Content-Type: application/javascript' \
-          -T ./script.js
+          -T script.js
