@@ -12,10 +12,15 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: Get latest version
+        id: get_version
+        run: |
+          VERSION=$(git describe --tags --abbrev=0 2>/dev/null || echo "v0.0.0")
+          echo "VERSION=${VERSION}" >> $GITHUB_ENV
+
       - name: Update script tag with new version
         run: |
-          VERSION=$(git describe --tags --abbrev=0)
           echo "Updating script tag with new version: ${VERSION}"
-          sed -i "s/<script src=\"https:\/\/cdn.jsdelivr.net\/gh\/Dinkeres\/emulator@main\/script.js\"><\/script>/<script src=\"https:\/\/cdn.jsdelivr.net\/gh\/Dinkeres\/emulator@${VERSION}\/script.js\"><\/script>/" index.html
+          sed -i "s|<script src=\"https://cdn.jsdelivr.net/gh/Dinkeres/emulator@main/script.js\"></script>|<script src=\"https://cdn.jsdelivr.net/gh/Dinkeres/emulator@${VERSION}/script.js\"></script>|" index.html
           echo "Updated script tag:"
           cat index.html
