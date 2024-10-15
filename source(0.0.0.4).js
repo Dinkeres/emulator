@@ -55,7 +55,7 @@ const buttonNames = [
 ];
 const buttonLinks = [
     [
-        "https://dinkeres.github.io/emulator/fire%20red.html", "https://www.example.com/gba-button-2", "https://www.example.com/gba-button-3"],
+        "https://dinkeres.github.io/emulator/Roms/fire%20red.html", "https://www.example.com/gba-button-2", "https://www.example.com/gba-button-3"],
     [
         "https://www.example.com/3ds-button-1", "https://www.example.com/3ds-button-2",],
     [
