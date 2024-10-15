@@ -1,0 +1,22 @@
+name: Update Script Tag
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  update-script:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Update script tag
+        run: |
+          TIMESTAMP=$(date +%s)
+          echo "<script src=\"https://cdn.jsdelivr.net/gh/Dinkeres/emulator@main/.github/workflows/Script.js?${TIMESTAMP}\"></script>" > script.html
+      - name: Commit changes
+        run: |
+          git add script.html
+          git commit -m "Update script tag with new timestamp"
+          git push origin main
