@@ -2,10 +2,10 @@ const VERSION = '1.0.0';
 const grid = document.querySelector('.grid');
 const numColumns = 5;
 const numButtonsPerColumn = 50; // generate 50 buttons per column
-const columnNames = ["test", "3DS", "NDS", "PSX", "ATARIA"];
+const columnNames = ["GBA", "3DS", "NDS", "PSX", "ATARIA"];
 const buttonNames = [
     [
-        "Fire Red", "test1", "Button 3", "Button 4", "Button 5",
+        "Fire Red", "Button 2", "Button 3", "Button 4", "Button 5",
         "Button 6", "Button 7", "Button 8", "Button 9", "Button 10",
         "Button 11", "Button 12", "Button 13", "Button 14", "Button 15",
         "Button 16", "Button 17", "Button 18", "Button 19", "Button 20",
