@@ -1,4 +1,4 @@
-const VERSION = '1.0.0';
+const VERSION = '1.0.1';
 const grid = document.querySelector('.grid');
 const numColumns = 5;
 const numButtonsPerColumn = 50; // generate 50 buttons per column
