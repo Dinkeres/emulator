@@ -13,10 +13,10 @@ jobs:
         uses: actions/checkout@v2
       - name: Update jsDelivr
         env:
-          JSDELIVR_URL: https://cdn.jsdelivr.net/gh/Dinkeres/emulator@main/Script.js
+          JSDELIVR_URL: https://cdn.jsdelivr.net/gh/${GITHUB_REPO}/script.js
         run: |
           curl -X PUT \
           $JSDELIVR_URL \
           -H 'Authorization: Bearer ${{ secrets.SECRET_TOKEN }}' \
           -H 'Content-Type: application/javascript' \
-          -T script.js
+          -T ./script.js
