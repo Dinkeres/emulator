@@ -24,8 +24,12 @@ jobs:
 
       - name: Commit changes
         run: |
-          git add .
-          git commit -m "Update script tag with new timestamp"
-          git config --global credential.helper store
-          echo "https://${SECRET_PAT}:@github.com" >> ~/.git-credentials
-          git push https://github.com/Dinkeres/emulator.git main
+          if git diff --quiet; then
+            echo "No changes to commit"
+          else
+            git add .
+            git commit -m "Update script tag with new timestamp"
+            git config --global credential.helper store
+            echo "https://${SECRET_PAT}:@github.com" >> ~/.git-credentials
+            git push https://github.com/Dinkeres/emulator.git main
+          fi
