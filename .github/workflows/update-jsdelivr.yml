@@ -26,6 +26,11 @@ jobs:
           -H 'Content-Type: application/javascript' \
           -T .github/workflows/Script.js
 
+      - name: Set Git identity
+        run: |
+          git config --global user.email "Luvrookie1@gmail.com"
+          git config --global user.name "Luvrookie"
+
       - name: Update script tag
         run: |
           TIMESTAMP=$(date +%s)
