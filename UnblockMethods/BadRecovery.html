@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>BadRecovery</title>
+</head>
+<body>
+  <h1>BadRecovery</h1>
+  <p>BadRecovery (formerly OlyBmmer) is an exploit for ChromeOS devices, leveraging a vulnerability in recovery images to get arbitrary code execution or to chain to other exploits.</p>
+  <p>BadRecovery unenrolls ALL devices that are EOL before 2024, and can unenroll current supported devices on kernel version 3 or lower.</p>
+  <p>The exploit and writeup were released to the public on October 5th, 2024.</p>
+  <p>You can read the writeup <a href="#">here</a>.</p>
+  
+  <h2>How to use</h2>
+  <p>You will need:</p>
+  <ul>
+    <li>A USB drive or SD card (8 GB or larger)</li>
+    <li>Something to flash the image (dd, rufus, chromebook recovery utility, etc.)</li>
+    <li>A ChromeOS device that has not received the patch (see patch)</li>
+  </ul>
+  
+  <h2>Preparing an image</h2>
+  <p>First, you must download an official recovery image for your device. You can download them from ChromiumDash or Chrome100.</p>
+  <p>See modes of operation for which version you'll need, usually r124 or older. Be sure you've downloaded the correct image for your device.</p>
+  <p>Make sure to unzip the recovery image before proceeding to the next step!</p>
+  
+  <p>Next, you must modify the recovery image using the script included with this repository. You can use the web version of the builder, though it is a fair bit slower.</p>
+  <p>To get the script, run these commands on a linux machine:</p>
+  <pre>
+    git clone https://github.com/BinBashBanana/badrecovery
+    cd badrecovery
+  </pre>
+  <p>To modify a recovery image using the script, run</p>
+  <pre>
+    sudo ./build_badrecovery.sh -i &lt;image.bin&gt;
+    (Replace &lt;image.bin&gt; with the path to your recovery image bin.)
+  </pre>
+  <p>The script may prompt you to install required dependencies.</p>
+  <p>You can specify the mode using the --type argument (-t for short). If left unspecified, the script will automatically determine the best option based on the version and features of the recovery image.</p>
+  <p>Example:</p>
+  <pre>
+    sudo ./build_badrecovery.sh -i image.bin -t postinst
+  </pre>
+  <p>The script would fail if it detected that the supplied recovery image does not meet the requirements for postinst mode (see table below).</p>
+  
+  <h2>Running on ChromeOS device</h2>
+  <p>First, enter recovery mode. See this <a href="#">article</a> for detailed instructions.</p>
+  <p>Important:</p>
+  <ul>
+    <li>On the unverified payload, you must also enter developer mode, and then enter recovery mode again for BadRecovery to work.</li>
+    <li>On Cr50 devices (most devices manufactured in 2018 or later), you must NOT be in developer mode for unenrollment to work. Ensure you are in verified mode recovery.</li>
+    <li>In any other case, you can use either verified or developer mode recovery.</li>
+  </ul>
+  <p>Plug in the prepared USB drive or SD card. On the unverified payload, BadRecovery will start in only a few seconds if you've done everything correctly.</p>
+  <p>On any other payload, the system will recover first. This may take a while depending on the speed of your drive.</p>
+  <p>On postinst and postinst_sym payloads, BadRecovery will start partway through the recovery process.</p>
+  <p>Note:</p>
+  <ul>
+    <li>If using postinst_sym and BadRecovery does not start, the path to the internal drive is incorrect.</li>
+  </ul>
+  <p>On basic or persist payloads, reboot into verified mode after recovery completes.</p>
+  <p>Optionally, you can look at VT3 and reboot early to skip postinst and save some time.</p>
+  <p>On the persist payload, BadRecovery will start within a few seconds of ChromeOS booting.</p>
+  <p>On basic, you must proceed through setup and the device will unenroll using cryptosmite.</p>
+  <p>When BadRecovery finishes, you will usually be able to skip the 5 minute developer mode delay by immediately switching back into recovery mode to get to developer mode. (This is not required.)</p>
+  
+  <h2>Modes of operation</h2>
+  <table>
+    <tr>
+      <th>Mode</th>
+      <th>Requirements</th>
+      <th>Description</th>
+    </tr>
+    <tr>
+      <td>postinst</td>
+      <td>86 ≤ version ≤ 124 AND disk layout v1 or v2</td>
+      <td>ROOT-A (usb) overflows into ROOT-A (internal). Not supported on disk layout v3 (devices with minios). Replaces postinst with a custom payload and grants code execution in recovery.</td>
+    </tr>
+    <tr>
+      <td>postinst_sym</td>
+      <td>34 ≤ version ≤ 124 AND (kernel ≥ 4.4 OR year < 2038)</td>
+      <td>ROOT-A (usb) overflows into STATE (internal). Stateful installer copies payload (usb) to a symlink in STATE (internal) which points to ROOT-A (internal). Replaces postinst with a custom payload and grants code execution in recovery.</td>
+    </tr>
+    <tr>
+      <td>persist</td>
+      <td>26 ≤ version ≤ 89 (untested below 68)</td>
+      <td>ROOT-A (usb) overflows into STATE (internal). Encrypted data persisted through cryptosmite, code execution given in ChromeOS through crx-import.</td>
+    </tr>
+    <tr>
+      <td>basic</td>
+      <td>26 ≤ version ≤ 119 (untested below 68)</td>
+      <td>ROOT-A (usb) overflows into STATE (internal). Standard cryptosmite unenrollment payload.</td>
+    </tr>
+    <tr>
+      <td>unverified</td>
+      <td>version ≤ 41 / version ≤ 47 (WP off) / any version (developer mode NOT blocked)</td>
+      <td>Unverified ROOT-A, developer mode only! Use this for very old devices or for testing. This is an intended feature, not a bug.</td>
+    </tr>
+  </table>
+  
+  <p>Note:</p>
+  <ul>
+    <li>All images will be larger than 2 and smaller than 8 GB, except unverified, which is almost always less than 1 GB.</li>
+  </ul>
+  
+  <h2>Patch</h2>
+  <p>R125 recovery images and newer are not vulnerable to this (except unverified). To determine if you can use this, follow these in order:</p>
+  <ul>
+    <li>Was your device EOL before 2024? → YES</li>
+    <li>Are you on ChromeOS version 124 or lower? → YES</li>
+    <li>Was your device released after mid-2024? → NO</li>
+    <li>Does your device show 03 or lower as the last digits of the kernver (kernel version) on the recovery screen (press TAB, look at the line that starts with "TPM")? → YES</li>
+    <li>Higher than 03? → NO</li>
+  </ul>
+</body>
+</html>
