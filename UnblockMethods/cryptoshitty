@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>How to Unenroll a ChromeOS Device</title>
+</head>
+<body>
+  <h1>How do I do it?</h1>
+  <p>Follow these steps to unenroll a ChromeOS device:</p>
+  <ol>
+    <li>Powerwash (ctrl + alt + shift + r on the login screen). If this is blocked for you, follow these steps to force a Powerwash: esc + refresh + power, ctrl+d, enter, space, enter.</li>
+    <li>Proceed through setup as normal.</li>
+    <li>When it starts to enroll, wait 1 to 2 seconds (no longer) and perform an EC reset (refresh + power).</li>
+    <li>When it turns on, if it says "getting your device ready" immediately, it should work! But if it opens to the Welcome page, it didn't work, and you have to restart from step 1.</li>
+    <li>When it starts to enroll again, wait 1 to 2 seconds (no longer) and enter recovery (esc + refresh + power).</li>
+    <li>Press the power button to turn it off, and leave it off for at least 15 hours. <strong>ANYTHING UNDER 15 HOURS WILL NOT WORK</strong>, but anything above 15 hours will work.</li>
+    <li>When you turn it on, you should be unenrolled!</li>
+  </ol>
+</body>
+</html>
+Thanks to TN
