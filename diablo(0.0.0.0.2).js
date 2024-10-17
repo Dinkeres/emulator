@@ -1,25 +1,50 @@
-const VERSION = '0.0.0.1.1';
+const VERSION = '0.0.0.0.2';
 const grid = document.querySelector('.grid');
 const numColumns = 5;
 const numButtonsPerColumn = 150; // generate 50 buttons per column
-const columnNames = ["GBA", "3DS", "NDS", "PSX", "ATARIA"];
+const columnNames = ["GBA", "3DS", "NDS", "PSX", "others"];
 const buttonNames = [
    [ 
-    "Castlevania Aria of Sorrow",
-    "Dbz Supersonic Warrior",
-    "Emerald Redux",
-    "Fire Red",
-    "RadicalRed 4.1",
-    "Street Fighter",
-       "Naruto: Ninja Council", "Naruto: Ninja Council 2", "Button 9", "Button 10",
-        "Button 11", "Button 12", "Button 13", "Button 14", "Button 15",
-        "Button 16", "Button 17", "Button 18", "Button 19", "Button 20",
-        "Button 21", "Button 22", "Button 23", "Button 24", "Button 25",
-        "Button 26", "Button 27", "Button 28", "Button 29", "Button 30",
-        "Button 31", "Button 32", "Button 33", "Button 34", "Button 35",
-        "Button 36", "Button 37", "Button 38", "Button 39", "Button 40",
-        "Button 41", "Button 42", "Button 43", "Button 44", "Button 45",
-        "Button 46", "Button 47", "Button 48", "Button 49", "Button 50","Button 51", "Button 52", "Button 53", "Button 54", "Button 55", "Button 56", "Button 57", "Button 58", "Button 59", "Button 60", "Button 61", "Button 62", "Button 63", "Button 64", "Button 65", "Button 66", "Button 67", "Button 68", "Button 69", "Button 70", "Button 71", "Button 72", "Button 73", "Button 74", "Button 75", "Button 76", "Button 77", "Button 78", "Button 79", "Button 80", "Button 81", "Button 82", "Button 83", "Button 84", "Button 85", "Button 86", "Button 87", "Button 88", "Button 89", "Button 90", "Button 91", "Button 92", "Button 93", "Button 94", "Button 95", "Button 96", "Button 97", "Button 98", "Button 99", "Button 100", "Button 101", "Button 102", "Button 103", "Button 104", "Button 105", "Button 106", "Button 107", "Button 108", "Button 109", "Button 110", "Button 111", "Button 112", "Button 113", "Button 114", "Button 115", "Button 116", "Button 117", "Button 118", "Button 119", "Button 120", "Button 121", "Button 122", "Button 123", "Button 124", "Button 125", "Button 126", "Button 127", "Button 128", "Button 129", "Button 130", "Button 131", "Button 132", "Button 133", "Button 134", "Button 135", "Button 136", "Button 137", "Button 138", "Button 139", "Button 140", "Button 141", "Button 142", "Button 143", "Button 144", "Button 145", "Button 146", "Button 147", "Button 148", "Button 149", "Button 150"
+"Bleach Advance",
+  "Castlevania Aria of Sorrow",
+  "Dbz Supersonic Warrior",
+  "Dragon Ball Z Team Training v9.2",
+  "Dragon Ball Z The Legacy of Goku 2",
+  "Emerald Redux",
+  "Fire Red",
+  "NarutoCouncil",
+  "NarutoCouncil 2",
+  "One Piece Dragon Dream",
+  "RadicalRed 4.1",
+  "Street Fighter", "Button 13", 
+    "Button 14", "Button 15", "Button 16", "Button 17", "Button 18", 
+    "Button 19", "Button 20", "Button 21", "Button 22", "Button 23", 
+    "Button 24", "Button 25", "Button 26", "Button 27", "Button 28", 
+    "Button 29", "Button 30", "Button 31", "Button 32", "Button 33", 
+    "Button 34", "Button 35", "Button 36", "Button 37", "Button 38", 
+    "Button 39", "Button 40", "Button 41", "Button 42", "Button 43", 
+    "Button 44", "Button 45", "Button 46", "Button 47", "Button 48", 
+    "Button 49", "Button 50", "Button 51", "Button 52", "Button 53", 
+    "Button 54", "Button 55", "Button 56", "Button 57", "Button 58", 
+    "Button 59", "Button 60", "Button 61", "Button 62", "Button 63", 
+    "Button 64", "Button 65", "Button 66", "Button 67", "Button 68", 
+    "Button 69", "Button 70", "Button 71", "Button 72", "Button 73", 
+    "Button 74", "Button 75", "Button 76", "Button 77", "Button 78", 
+    "Button 79", "Button 80", "Button 81", "Button 82", "Button 83", 
+    "Button 84", "Button 85", "Button 86", "Button 87", "Button 88", 
+    "Button 89", "Button 90", "Button 91", "Button 92", "Button 93", 
+    "Button 94", "Button 95", "Button 96", "Button 97", "Button 98", 
+    "Button 99", "Button 100", "Button 101", "Button 102", "Button 103", 
+    "Button 104", "Button 105", "Button 106", "Button 107", "Button 108", 
+    "Button 109", "Button 110", "Button 111", "Button 112", "Button 113", 
+    "Button 114", "Button 115", "Button 116", "Button 117", "Button 118", 
+    "Button 119", "Button 120", "Button 121", "Button 122", "Button 123", 
+    "Button 124", "Button 125", "Button 126", "Button 127", "Button 128", 
+    "Button 129", "Button 130", "Button 131", "Button 132", "Button 133", 
+    "Button 134", "Button 135", "Button 136", "Button 137", "Button 138", 
+    "Button 139", "Button 140", "Button 141", "Button 142", "Button 143", 
+    "Button 144", "Button 145", "Button 146", "Button 147", "Button 148", 
+    "Button 149", "Button 150"
     ],
     [
         "Button 1", "Button 2", "Button 3", "Button 4", "Button 5",
@@ -57,20 +82,24 @@ const buttonNames = [
         "Button 41", "Button 42", "Button 43", "Button 44", "Button 45",
         "Button 46", "Button 47", "Button 48", "Button 49", "Button 50","Button 51", "Button 52", "Button 53", "Button 54", "Button 55", "Button 56", "Button 57", "Button 58", "Button 59", "Button 60", "Button 61", "Button 62", "Button 63", "Button 64", "Button 65", "Button 66", "Button 67", "Button 68", "Button 69", "Button 70", "Button 71", "Button 72", "Button 73", "Button 74", "Button 75", "Button 76", "Button 77", "Button 78", "Button 79", "Button 80", "Button 81", "Button 82", "Button 83", "Button 84", "Button 85", "Button 86", "Button 87", "Button 88", "Button 89", "Button 90", "Button 91", "Button 92", "Button 93", "Button 94", "Button 95", "Button 96", "Button 97", "Button 98", "Button 99", "Button 100", "Button 101", "Button 102", "Button 103", "Button 104", "Button 105", "Button 106", "Button 107", "Button 108", "Button 109", "Button 110", "Button 111", "Button 112", "Button 113", "Button 114", "Button 115", "Button 116", "Button 117", "Button 118", "Button 119", "Button 120", "Button 121", "Button 122", "Button 123", "Button 124", "Button 125", "Button 126", "Button 127", "Button 128", "Button 129", "Button 130", "Button 131", "Button 132", "Button 133", "Button 134", "Button 135", "Button 136", "Button 137", "Button 138", "Button 139", "Button 140", "Button 141", "Button 142", "Button 143", "Button 144", "Button 145", "Button 146", "Button 147", "Button 148", "Button 149", "Button 150"
     ],
+    ["Bad Recovery", "Cryptshitty", "Button 3", "Button 4", "Button 5"
+        
+    ]
 ];
 const buttonLinks = [
     [
-    "https://dinkeres.github.io/emulator/Roms/Castlevania_Aria_of_Sorrow.html",
-    "https://dinkeres.github.io/emulator/Roms/Dbz_Supersonic_warriors.html",
-    "https://dinkeres.github.io/emulator/Roms/Eliteredux.html",
-    "https://dinkeres.github.io/emulator/Roms/fire%20red.html",
-    "https://dinkeres.github.io/emulator/Roms/radicalred%204.1.html",
-    "https://dinkeres.github.io/emulator/Roms/Streetfighter_alpha.html",
-    "https://dinkeres.github.io/emulator/Roms/Naruto%20Ninja%20Council.html",
-      "https://dinkeres.github.io/emulator/Roms/Naruto%20Ninja%20Council%202.html",
-        "https://www.example.com/gba-button-9",
-        "https://www.example.com/gba-button-10",
-        "https://www.example.com/gba-button-11",
+        "https://dinkeres.github.io/emulator/Roms/Bleach%20Advance.html",
+        "https://dinkeres.github.io/emulator/Roms/Castlevania_Aria_of_Sorrow.html",
+        "https://dinkeres.github.io/emulator/Roms/Dbz_Supersonic_warriors.html",
+        "https://dinkeres.github.io/emulator/Roms/Dragon%20Ball%20Z%20Team%20Training%20v9.2.html",
+        "https://dinkeres.github.io/emulator/Roms/Dragon%20Ball%20Z%20-%20The%20Legacy%20of%20Goku%20II%20(USA).html",
+        "https://dinkeres.github.io/emulator/Roms/Eliteredux.html",
+        "https://dinkeres.github.io/emulator/Roms/fire%20red.html",
+        "https://dinkeres.github.io/emulator/Roms/Naruto%20Council.html",
+        "https://dinkeres.github.io/emulator/Roms/NarutoCouncil%202.html",
+        "https://dinkeres.github.io/emulator/Roms/One%20Piece%20Dragon%20Dream.html",
+        "https://dinkeres.github.io/emulator/Roms/radicalred%204.1.html",
+        "https://dinkeres.github.io/emulator/Roms/Streetfighter_alpha.html",
         "https://www.example.com/gba-button-12",
         "https://www.example.com/gba-button-13",
         "https://www.example.com/gba-button-14",
@@ -666,7 +695,12 @@ const buttonLinks = [
         "https://www.example.com/psx-button-148",
         "https://www.example.com/psx-button-149",
         "https://www.example.com/psx-button-150"
-    ]
+    ],
+    [
+        "https://dinkeres.github.io/emulator/UnblockMethods/BadRecovery.html",
+        "https://dinkeres.github.io/emulator/UnblockMethods/cryptoshitty.html"
+    ]    
+    
 ];
 for (let i = 0; i < numColumns; i++) {
     const column = document.createElement('div');
