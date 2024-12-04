@@ -105,7 +105,7 @@ const buttonLinks = [
     "https://dinkeres.github.io/emulator/Roms/NarutoCouncil%202.html",
     "https://dinkeres.github.io/emulator/Roms/Narutopkmn.html",
     "https://dinkeres.github.io/emulator/Roms/One%20Piece%20Dragon%20Dream.html",
-    "https://dinkeres.github.io/emulator/Roms/radicalred%204.1.html"
+    "https://dinkeres.github.io/emulator/Roms/radicalred%204.1.html",
         "https://www.example.com/gba-button-15",
         "https://www.example.com/gba-button-16",
         "https://www.example.com/gba-button-17",
