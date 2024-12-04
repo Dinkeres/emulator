@@ -19,8 +19,7 @@ const buttonNames = [
     "Naruto Pkmn",
     "One Piece Dragon Dream",
     "RadicalRed 4.1",
-    "Street Fighter"
-    "Button 16", "Button 17", "Button 18", 
+    "Street Fighter","Button 16", "Button 17", "Button 18", 
     "Button 19", "Button 20", "Button 21", "Button 22", "Button 23", 
     "Button 24", "Button 25", "Button 26", "Button 27", "Button 28", 
     "Button 29", "Button 30", "Button 31", "Button 32", "Button 33", 
