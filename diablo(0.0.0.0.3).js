@@ -97,7 +97,7 @@ const buttonLinks = [
     "https://dinkeres.github.io/emulator/Roms/Dragon%20Ball%20Z%20Team%20Training%20v9.2.html",
     "https://dinkeres.github.io/emulator/Roms/Dragon%20Ball%20Z%20-%20The%20Legacy%20of%20Goku%20II%20(USA).html",
     "https://dinkeres.github.io/emulator/Roms/Eliteredux.html",
-    "https://github.com/Dinkeres/emulator/blob/main/Roms/Elite%20Redux%202.5.html",
+    "https://dinkeres.github.io/emulator/Roms/Elite%20Redux%202.5.html",
     "https://dinkeres.github.io/emulator/Roms/fire%20red.html",
     "https://dinkeres.github.io/emulator/Roms/Naruto%20Council.html",
     "https://dinkeres.github.io/emulator/Roms/NarutoCouncil%202.html",
