@@ -242,11 +242,12 @@ const buttonLinks = [
         "https://www.example.com/gba-button-150"
     ],
     [
-         "Mario Kart DS (EU)",
-        "Naruto: Ninja Destiny 2",
-        "Pokemon Platinum",
-        "Pokemon Soothing Silver",
-        "Pokemon Unbound V2",
+      "https://dinkeres.github.io/emulator/Roms/Mario%20Kart%20DS%20(EU).html",
+        "https://dinkeres.github.io/emulator/Roms/Naruto:%20Ninja%20Destiny%202%20.html",
+        "https://dinkeres.github.io/emulator/Roms/Pokemon%20Platinum%20Version.html",
+        "https://dinkeres.github.io/emulator/Roms/Pokemon%20Soothing%20Silver.html",
+        "https://dinkeres.github.io/emulator/Roms/Pokemon%20Unbound%20V2.html",
+
         "https://www.example.com/3ds-button-6",
         "https://www.example.com/3ds-button-7",
         "https://www.example.com/3ds-button-8",
