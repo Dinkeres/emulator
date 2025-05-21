@@ -1,0 +1,161 @@
+ @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
+
+  /* General reset and styling */
+  * {
+    box-sizing: border-box;
+  }
+  body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Poppins', sans-serif;
+    background: #101820; /* Night Black background */
+    color: #D8D8D8; /* Text color */
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Elegant text effect */
+  h1, button {
+    color: #4D70FF; /* Cool Neon Blue color */
+    text-shadow: 
+      1px 1px 0 #1F2A44, 
+      2px 2px 0 #1F2A44, 
+      3px 3px 0 #1F2A44, 
+      4px 4px 0 #1F2A44; /* Navy Steel shadow for depth */
+  }
+
+  /* Common container for main and emulator pages */
+  #main-page, #emulator-page {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* MAIN PAGE STYLES */
+  #main-page {
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 5vh;
+  }
+  #main-page h1 {
+    font-size: 4rem;
+    font-weight: 600;
+    margin-bottom: 60px;
+  }
+  .button-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Reduced gap between buttons */
+    width: 60vw;
+    max-width: 800px;
+    flex-wrap: wrap; /* Allow buttons to wrap if needed */
+  }
+  .button-container button {
+    flex: 1 1 150px; /* Allow buttons to be flexible with a minimum width */
+    padding: 10px 0; /* Reduced padding for smaller buttons */
+    font-size: 1.1rem; /* Smaller font size */
+    font-weight: 600;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    background: #1F2A44; /* Navy Steel for buttons */
+    color: #D8D8D8; /* Text color */
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1); /* Softer shadow */
+    transition: background 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
+  }
+  .button-container button:hover {
+    background: #4D70FF; /* Cool Neon Blue for hover effect */
+    color: #101820; /* Change text color to Night Black on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Darker shadow on hover */
+  }
+  .button-container button:focus {
+    outline: none;
+    box-shadow: 0 0 0 4px #4D70FF; /* Cool Neon Blue outline on focus */
+  }
+
+  /* EMULATOR PAGE STYLES */
+  #emulator-page {
+    display: none;
+    flex-direction: column;
+    height: 100vh;
+    padding: 20px 40px;
+  }
+  #emulator-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 50px;
+    margin-bottom: 20px;
+  }
+  #emulator-name-btn {
+    font-size: 1.5rem;
+    font-weight: 700;
+    padding: 0 10px;
+    border: none;
+    background: transparent;
+    color: #4D70FF; /* Cool Neon Blue color */
+    cursor: pointer;
+    user-select: none;
+    transition: color 0.3s ease;
+  }
+  #emulator-name-btn:hover {
+    color: #EAEAEA; /* Highlight on hover */
+  }
+  #emulator-header-center {
+    flex: 1;
+    text-align: center;
+  }
+  #emulator-header-right {
+    width: 50px;
+  }
+
+  /* Search bar container */
+  #search-container {
+    margin-bottom: 20px;
+    max-width: 600px;
+    width: 100%;
+  }
+  #search-input {
+    width: 100%;
+    padding: 12px 16px;
+    font-size: 1.1rem;
+    border-radius: 10px;
+    border: 1px solid #4D70FF; /* Cool Neon Blue border */
+    background: #1F2A44; /* Navy Steel background for input */
+    color: #D8D8D8; /* Text color */
+    box-shadow: inset 0 2px 5px rgba(0,0,0,0.3);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  #search-input:focus {
+    outline: none;
+    border-color: #4D70FF; /* Cool Neon Blue on focus */
+    box-shadow: 0 0 8px #4D70FF; /* Cool Neon Blue highlight shadow on focus */
+  }
+
+  /* Game buttons container */
+  #vertical-button-container {
+    display: flex;
+    flex-wrap: wrap; /* Allow buttons to wrap */
+    justify-content: center; /* Center the buttons */
+    gap: 20px; /* Space between buttons */
+    padding-top: 10px;
+  }
+  #vertical-button-container button {
+    flex: 1 1 150px; /* Allow buttons to be flexible with a minimum width */
+    padding: 10px 0; /* Reduced padding for smaller buttons */
+    font-size: 1rem; /* Smaller font size */
+    font-weight: 600;
+    border-radius: 10px;
+    border: none;
+    background: #1F2A44; /* Navy Steel for buttons */
+    color: #D8D8D8; /* Text color */
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 0 3px 8px rgba(255, 255, 255, 0.1);
+    transition: background 0.3s ease, color 0.3s ease;
+  }
+  #vertical-button-container button:hover {
+    background: #4D70FF; /* Cool Neon Blue for hover effect */
+    color: #101820; /* Change text color to Night Black on hover */
+  }
